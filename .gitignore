@@ -1,5 +1,5 @@
 **/.terraform/*
-.
+*/private-key/*
 # .tfstate files
 *.tfstate
 *.tfstate.*

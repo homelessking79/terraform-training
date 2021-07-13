@@ -8,8 +8,10 @@ resource "aws_vpc" "main" {
 }
 
 resource "aws_subnet" "main" {
+  for_each = var.azs
   vpc_id                  = var.vpc_id
-  cidr_block              = var.subnet_cidr
+  cidr_block              = each.value
+  availability_zone = each.key
   map_public_ip_on_launch = true
   tags                    = var.subnet_tags
 }
@@ -38,10 +40,11 @@ resource "aws_route_table" "public" {
 }
 
 resource "aws_route_table_association" "public" {
-
-  subnet_id = var.subnet_id
+  count = length(var.subnet_id)
+  subnet_id = var.subnet_id[count.index]
 
   route_table_id = var.route_table_id
+
 }
 
 
@@ -52,7 +55,7 @@ output "vpc_id" {
 }
 
 output "subnet_id" {
-  value = aws_subnet.main.id
+  value = [for subnet in aws_subnet.main : subnet.id]
 }
 
 output "ig_id" {

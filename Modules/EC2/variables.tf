@@ -8,7 +8,9 @@ variable "ami_id" {}
 variable "instance_type" {
   default = "t2.micro"
 }
-variable "subnet_id" {}
+variable "subnet_id" {
+  type = list(string)
+}
 
 variable "instance_name" {
   type = string
@@ -26,12 +28,12 @@ variable "sg_name" {
   type        = string
 }
 
-variable "sg_ids"{
-    description = "List of security group ids"
-    type = list
+variable "sg_ids" {
+  description = "List of security group ids"
+  type        = list(any)
 }
 
-variable "key_name"{
-    description = "SSH public key"
-    type = string
+variable "key_name" {
+  description = "SSH public key"
+  type        = string
 }
