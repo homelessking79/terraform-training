@@ -16,4 +16,8 @@ module "my_ec2" {
     subnet_id = module.my_vpc.subnet_id
     ami_id = "ami-0e5182fad1edfaa68"
     instance_name = "Dev"
+    key_name = "terraform-training"
+    sg_ids = [module.my_ec2.sg_id]
+    vpc_id = module.my_vpc.vpc_id
+    sg_name = "Allow web traffic on Dev environment"
 }
