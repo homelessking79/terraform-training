@@ -6,6 +6,9 @@ variable "target_group_name" {
 variable "port" {
   default = 80
 }
+variable "listener_port"{
+  default = 80
+}
 
 variable "protocol" {
   type    = string

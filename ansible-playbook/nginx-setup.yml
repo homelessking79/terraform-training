@@ -1,0 +1,44 @@
+---
+- hosts: all
+  become: yes
+  become_user: root
+  become_method: sudo
+  tasks:
+    - name: Enable nginx for amazon linux 2
+      shell: "amazon-linux-extras enable nginx1.12"
+      become: yes
+    - name: Install nginx
+      yum:
+        name: nginx
+        state: latest
+    - name: Copy nginx config files
+      copy:
+        src: "./files/nginx.conf"
+        dest: "/etc/nginx/nginx.conf"
+        mode: 0644
+    - name: Creates directory
+      file: 
+        path: "/var/www/myweb"
+        state: directory
+    - name: Copy static files
+      copy:
+        src: "./files/index.html"
+        dest: "/var/www/myweb/"
+        mode: 0644
+    # - name: Delete content & directory
+    #   file:
+    #     state: absent
+    #     path: /etc/nginx/nginx.config
+    # - name: Copy nginx config
+    #   copy:
+    #     src: "./files/nginx.conf"
+    #     dest: "etc/nginx/"
+    #     # force: yes
+    - name: Update static nginx config
+      copy: 
+        src: "./files/myweb"
+        dest: "/etc/nginx/sites-enabled/"
+        mode: 0644
+    - name: Restart Nginx
+      service: name=nginx state=restarted
+      become: yes

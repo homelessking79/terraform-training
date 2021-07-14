@@ -26,7 +26,7 @@ resource "aws_lb" "main" {
 
 resource "aws_lb_listener" "main" {
   load_balancer_arn = var.nlb_arn
-  port              = var.port
+  port              = var.listener_port
   protocol          = "TCP"
   /* certificate_arn   = "arn:aws:iam::187416307283:server-certificate/test_cert_rab3wuqwgja25ct3n4jdj2tzu4"
   alpn_policy       = "HTTP2Preferred" */

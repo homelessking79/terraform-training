@@ -37,3 +37,7 @@ variable "key_name" {
   description = "SSH public key"
   type        = string
 }
+
+variable "pvt_key"{
+  default = "../private-key-ssh/terraform-training.pem"
+}
