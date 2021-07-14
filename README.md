@@ -18,8 +18,14 @@ Have AWS credentials configuration. Some recommended ways:
 * aws-vault session
 * Export to environments variable
 * Use as Terraform variables
+<!-- end of the list -->
+
 Installed Terraform version >= 0.13
+<!-- end of the list -->
+
 Installed Ansible
+<!-- end of the list -->
+
 Already have a S3 Bucket for backend remote state
 ### Setup backend remote state
 Change the region, bucket, key into yours.
