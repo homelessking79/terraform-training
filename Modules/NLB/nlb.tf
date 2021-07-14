@@ -17,7 +17,7 @@ resource "aws_lb" "main" {
   load_balancer_type = "network"
   subnets            = var.subnet_id
 
-  enable_deletion_protection = true
+  enable_deletion_protection = false
 
   tags = {
     Environment = var.environment_name
@@ -43,4 +43,8 @@ output "nlb_arn"{
 
 output "target_group_arn"{
     value = aws_lb_target_group.main.arn
+}
+
+output "nlb_dns"{
+  value = aws_lb.main.dns_name
 }

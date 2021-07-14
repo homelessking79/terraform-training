@@ -1,3 +1,8 @@
+provider "aws" {
+  region = "ap-southeast-1"
+}
+
+
 module "my_vpc" {
   source   = "../Modules/VPC"
   vpc_cidr = "10.1.0.0/16"
@@ -37,4 +42,8 @@ module "my_nlb" {
   nlb_name          = "UAT"
   environment_name  = "UAT Environment"
   nlb_arn           = module.my_nlb.nlb_arn
+}
+
+output "nlb_dns" {
+  value = module.my_nlb.nlb_dns
 }
