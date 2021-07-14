@@ -19,17 +19,17 @@ resource "aws_instance" "main" {
       private_key = file(var.pvt_key)
     }
 
-    inline = ["sudo yum search python3", 
-              "sudo yum install python3 -y"]
+    inline = ["sudo yum search python3",
+    "sudo yum install python3 -y"]
 
   }
 
-    provisioner "local-exec" {
+  provisioner "local-exec" {
     command = "ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook -u ec2-user -i '${self.public_ip},' --private-key ${var.pvt_key}  ../ansible-playbook/nginx-setup.yml"
   }
 }
 
-  
+
 
 output "instance_id" {
   value = [for instance in aws_instance.main : instance.id]
