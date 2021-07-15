@@ -23,6 +23,7 @@ pipeline{
                         terraform validate
                     else
                         echo "Nothing changed"
+                    fi
                 '''
             }
         }
@@ -42,6 +43,8 @@ pipeline{
                         terraform plan
                     else
                         echo "Nothing changed"
+
+                    fi
                 '''
             }
         }
@@ -58,6 +61,7 @@ pipeline{
                         terraform apply -auto-approve
                     else
                         echo "Nothing changed"
+                    fi
                 '''
             }
         }
