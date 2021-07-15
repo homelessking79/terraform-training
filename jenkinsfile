@@ -14,7 +14,7 @@ pipeline{
                     if [[ $CHANGE_TARGET ]]; then
                         TARGET_ENV=$CHANGE_TARGET
                     else
-                        TARGET_ENV=BRANCH_NAME
+                        TARGET_ENV=$BRANCH_NAME
                     fi
 
                     if [ -d "environments/${TARGET_ENV}"]; then
@@ -23,6 +23,7 @@ pipeline{
                         terraform validate
                     else
                         echo "Nothing changed"
+                    fi
                 '''
             }
         }
@@ -34,7 +35,7 @@ pipeline{
                     if [[ $CHANGE_TARGET ]]; then
                         TARGET_ENV=$CHANGE_TARGET
                     else
-                        TARGET_ENV=BRANCH_NAME
+                        TARGET_ENV=$BRANCH_NAME
                     fi
 
                     if [ -d "environments/${TARGET_ENV}"]; then
@@ -42,6 +43,7 @@ pipeline{
                         terraform plan
                     else
                         echo "Nothing changed"
+                    fi
                 '''
             }
         }
@@ -58,6 +60,7 @@ pipeline{
                         terraform apply -auto-approve
                     else
                         echo "Nothing changed"
+                    fi
                 '''
             }
         }
