@@ -25,12 +25,9 @@ resource "aws_instance" "main" {
   }
 
   provisioner "local-exec" {
-    command = "ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook -u ec2-user -i '${self.public_ip},' --private-key ${var.pvt_key}  ../ansible-playbook/nginx-setup.yml"
+    command = "ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook -u ec2-user -i '${self.public_ip},' --private-key ${var.pvt_key}  ../../ansible-playbook/nginx-setup.yml"
   }
 }
 
 
 
-output "instance_id" {
-  value = [for instance in aws_instance.main : instance.id]
-}

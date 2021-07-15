@@ -3,7 +3,7 @@ provider "aws" {
 }
 
 module "my_vpc" {
-  source   = "../Modules/VPC"
+  source   = "../../modules/vpc"
   vpc_cidr = "192.168.0.0/16"
   tenancy  = "default"
   vpc_id   = module.my_vpc.vpc_id
@@ -18,7 +18,7 @@ module "my_vpc" {
 
 module "my_ec2" {
   subnet_id     = module.my_vpc.subnet_id
-  source        = "../Modules/EC2"
+  source        = "../../modules/ec2"
   ec2_count     = 1
   instance_type = "t2.micro"
   ami_id        = "ami-0e5182fad1edfaa68"
@@ -30,7 +30,7 @@ module "my_ec2" {
 }
 
 module "my_nlb" {
-  source            = "../Modules/NLB"
+  source            = "../../modules/nlb"
   subnet_id         = module.my_vpc.subnet_id
   target_group_name = "Dev-target-group"
   port              = 3000
@@ -43,6 +43,3 @@ module "my_nlb" {
   nlb_arn           = module.my_nlb.nlb_arn
 }
 
-output "nlb_dns" {
-  value = module.my_nlb.nlb_dns
-}

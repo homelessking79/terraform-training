@@ -28,23 +28,9 @@ resource "aws_lb_listener" "main" {
   load_balancer_arn = var.nlb_arn
   port              = var.listener_port
   protocol          = "TCP"
-  /* certificate_arn   = "arn:aws:iam::187416307283:server-certificate/test_cert_rab3wuqwgja25ct3n4jdj2tzu4"
-  alpn_policy       = "HTTP2Preferred" */
-
   default_action {
     type             = "forward"
     target_group_arn = var.target_group_arn
   }
 }
 
-output "nlb_arn"{
-    value = aws_lb.main.arn
-}
-
-output "target_group_arn"{
-    value = aws_lb_target_group.main.arn
-}
-
-output "nlb_dns"{
-  value = aws_lb.main.dns_name
-}
