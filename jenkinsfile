@@ -11,11 +11,8 @@ pipeline{
             when { anyOf {branch "prod"; branch "dev"; branch "uat"; changeRequest()} }
             steps{
                 sh '''
-                    if [[ $CHANGE_TARGET ]]; then
-                        TARGET_ENV=$CHANGE_TARGET
-                    else
-                        TARGET_ENV=$BRANCH_NAME
-                    fi
+                 
+                    TARGET_ENV=$BRANCH_NAME
 
                     if [ -d environments/${TARGET_ENV}/]; then
                         cd environments/${TARGET_ENV}
