@@ -55,7 +55,8 @@ pipeline{
             steps{
                 sh '''
                     TARGET_ENV=$BRANCH_NAME
-                    
+                    cd private-key/
+                    chmod 400 terraform-training.pem
 
                     if [ -d "environments/${TARGET_ENV}/" ]; then
                         cd environments/${TARGET_ENV}
