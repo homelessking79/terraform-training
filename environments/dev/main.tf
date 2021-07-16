@@ -22,7 +22,7 @@ module "my_ec2" {
   ec2_count     = 1
   instance_type = "t2.micro"
   ami_id        = "ami-0e5182fad1edfaa68"
-  instance_name = "Dev-phong"
+  instance_name = "Dev-phongdsfdsf"
   key_name      = "terraform-training"
   sg_ids        = [module.my_ec2.sg_id]
   vpc_id        = module.my_vpc.vpc_id
