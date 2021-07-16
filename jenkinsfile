@@ -12,7 +12,11 @@ pipeline{
             steps{
                 sh '''
                  
-                    TARGET_ENV=$CHANGE_TARGET
+                    if [ $CHANGE_TARGET ]; then
+                        TARGET_ENV=$CHANGE_TARGET
+                    else
+                        TARGET_ENV=$BRANCH_NAME
+                    fi
 
                     if [ -d "environments/${TARGET_ENV}/" ]; then
                         cd environments/${TARGET_ENV}
