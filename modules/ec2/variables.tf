@@ -39,5 +39,5 @@ variable "key_name" {
 }
 
 variable "pvt_key" {
-  default = "/home/phongdeptrai/.ssh/terraform-training.pem"
+  default = "../../private-key/terraform-training.pem"
 }
