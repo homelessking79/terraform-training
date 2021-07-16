@@ -1,6 +1,6 @@
 **/.terraform/*
-*/private-key-ssh/*
-*.pem
+# */private-key-ssh/*
+# *.pem
 # .tfstate files
 *.tfstate
 *.tfstate.*
