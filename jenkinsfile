@@ -17,7 +17,7 @@ pipeline{
                         TARGET_ENV=$BRANCH_NAME
                     fi
 
-                    if [ -d "environments/${TARGET_ENV}"]; then
+                    if [ -d environments/${TARGET_ENV}]; then
                         cd environments/${TARGET_ENV}
                         terraform init
                         terraform validate
@@ -38,7 +38,7 @@ pipeline{
                         TARGET_ENV=$BRANCH_NAME
                     fi
 
-                    if [ -d "environments/${TARGET_ENV}"]; then
+                    if [ -d environments/${TARGET_ENV}]; then
                         cd environments/${TARGET_ENV}
                         terraform plan
                     else
@@ -56,7 +56,7 @@ pipeline{
                     TARGET_ENV=$BRANCH_NAME
                     
 
-                    if [ -d "environments/${TARGET_ENV}"]; then
+                    if [ -d environments/${TARGET_ENV}]; then
                         cd environments/${TARGET_ENV}
                         terraform apply -auto-approve
                     else
